@@ -1,6 +1,6 @@
 module com.mrv.monitor.scanner {
     requires lombok;
 
-    //exports com.mrv.modulesgradle.feature.model;
-    //exports com.mrv.modulesgradle.feature.service;
+    //exports com.mrv.monitor.scanner.model;
+    //exports com.mrv.monitor.scanner.service;
 }
