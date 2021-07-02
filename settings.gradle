@@ -1,0 +1,6 @@
+rootProject.name = 'monitor'
+
+include 'scanner'
+include 'application'
+
+
