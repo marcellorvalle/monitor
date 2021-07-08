@@ -1,6 +1,8 @@
 package com.mrv.monitor.scanner.service;
 
 import com.mrv.monitor.scanner.webclient.Resposta;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -20,5 +22,8 @@ class ExtratorDadosAluguelServiceTest {
             .block();
 
         var dados = new ExtratorDadosAluguelService().executar(result);
+
+        System.out.println(LocalDate.now().format(DateTimeFormatter.ISO_DATE));
+        System.out.println(LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE));
     }
 }
