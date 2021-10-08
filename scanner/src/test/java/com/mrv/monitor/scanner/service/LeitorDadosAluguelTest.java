@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.mrv.monitor.scanner.webclient.B3WebClient;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
 class LeitorDadosAluguelTest {
@@ -17,7 +20,11 @@ class LeitorDadosAluguelTest {
 
     @Test
     void deve() {
-        System.out.println(leitorDadosAluguel.executar("PSSA3", LocalDate.now()));
+        Stream
+            .of("CIEL3", "EGIE3", "EZTC3", "HYPE3", "ODPV3", "PSSA3", "RADL3")
+            .map(t -> leitorDadosAluguel.executar(t, LocalDate.now()))
+            .forEach(System.out::println);
+        //System.out.println(leitorDadosAluguel.executar("PSSA3", LocalDate.now()));
         //arrange
         //act
         //assert

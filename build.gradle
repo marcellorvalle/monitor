@@ -28,6 +28,7 @@ allprojects {
 	apply plugin: 'io.spring.dependency-management'
 
 	repositories {
+		mavenLocal()
 		mavenCentral()
 	}
 
@@ -39,7 +40,9 @@ allprojects {
 		annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 		annotationProcessor 'org.projectlombok:lombok'
 		annotationProcessor 'org.springframework:spring-context-indexer:5.3.5'
+
 		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+		testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 	}
 
 	test {
@@ -51,11 +54,11 @@ allprojects {
 	}
 }
 
-def modules= [
-	"scanner",
-	":application"
-]
-
-dependencies {
-	modules.collect { implementation project(it)}
-}
+//def modules= [
+//	"scanner",
+//	":application"
+//]
+//
+//dependencies {
+//	modules.collect { implementation project(it)}
+//}
