@@ -1,4 +1,4 @@
-package com.mrv.monitor.scanner.service;
+package com.mrv.monitor.scanner.consulta;
 
 import com.mrv.monitor.scanner.webclient.B3WebClient;
 import java.time.LocalDate;
@@ -6,13 +6,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
-class LeitorDadosAluguelTest {
+class LeitorDadosAluguelServiceTest {
 
-    private final LeitorDadosAluguel leitorDadosAluguel;
+    private final LeitorDadosAluguelService leitorDadosAluguelService;
 
-    public LeitorDadosAluguelTest() {
-        leitorDadosAluguel =
-            new LeitorDadosAluguel(new B3WebClient(), new ProcessadorDadosAluguelService(), DateTimeFormatter.ISO_DATE);
+    public LeitorDadosAluguelServiceTest() {
+        leitorDadosAluguelService =
+            new LeitorDadosAluguelService(
+                new B3WebClient(),
+                new ProcessadorDadosAluguelService(),
+                DateTimeFormatter.ISO_DATE
+            );
     }
 
     @Test
@@ -20,7 +24,7 @@ class LeitorDadosAluguelTest {
         Stream
             .of("CIEL3", "EGIE3", "EZTC3", "HYPE3", "ODPV3", "PSSA3", "RADL3")
             .parallel()
-            .map(t -> leitorDadosAluguel.executar(t, LocalDate.now()))
+            .map(t -> leitorDadosAluguelService.executar(t, LocalDate.now()))
             .forEach(System.out::println);
         //System.out.println(leitorDadosAluguel.executar("PSSA3", LocalDate.now()));
         //arrange

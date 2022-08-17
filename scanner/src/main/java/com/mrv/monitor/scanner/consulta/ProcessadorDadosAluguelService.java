@@ -1,23 +1,23 @@
-package com.mrv.monitor.scanner.service;
+package com.mrv.monitor.scanner.consulta;
 
-import com.mrv.monitor.scanner.model.DadosAluguel;
 import com.mrv.monitor.scanner.webclient.Resposta;
 import java.time.LocalDate;
 import java.util.Set;
+import org.springframework.stereotype.Service;
 
-public class ProcessadorDadosAluguelService {
+@Service
+class ProcessadorDadosAluguelService {
 
-    public DadosAluguel executar(Resposta resposta) {
-        var dados = new DadosAluguel();
-        dados.setTicket(resposta.name());
-        dados.setNumContratos(resposta.detalhes().size());
-        dados.setTaxaMedia(taxaMedia(resposta.detalhes()));
-        dados.setTaxaMaxima(taxaMaxima(resposta.detalhes()));
-        dados.setTaxaMinima(taxaMinima(resposta.detalhes()));
-        dados.setQuantidade(quantidade(resposta.detalhes()));
-        dados.setData(LocalDate.now());
-
-        return dados;
+    DadosAluguel executar(Resposta resposta) {
+        return new DadosAluguel(
+            resposta.name(),
+            resposta.detalhes().size(),
+            taxaMedia(resposta.detalhes()),
+            taxaMaxima(resposta.detalhes()),
+            taxaMinima(resposta.detalhes()),
+            quantidade(resposta.detalhes()),
+            LocalDate.now()
+        );
     }
 
     private double taxaMedia(Set<Resposta.Detalhe> detalhes) {

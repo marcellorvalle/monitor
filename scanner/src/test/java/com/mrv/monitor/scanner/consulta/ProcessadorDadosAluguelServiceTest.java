@@ -1,5 +1,6 @@
-package com.mrv.monitor.scanner.service;
+package com.mrv.monitor.scanner.consulta;
 
+import com.mrv.monitor.scanner.consulta.ProcessadorDadosAluguelService;
 import com.mrv.monitor.scanner.webclient.Resposta;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.reactive.function.client.WebClient;
