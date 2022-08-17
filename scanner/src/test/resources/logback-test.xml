@@ -1,0 +1,7 @@
+<configuration>
+  <logger name="org.springframework" level="ERROR"/>
+  <logger name="org.hibernate" level="ERROR" />
+  <logger name="com.zaxxer.hikari" level="ERROR" />
+  <logger name="org.apache.commons.beanutils.PropertyUtils" level="ERROR" />
+  <logger name="io.netty" level="ERROR" />
+</configuration>
