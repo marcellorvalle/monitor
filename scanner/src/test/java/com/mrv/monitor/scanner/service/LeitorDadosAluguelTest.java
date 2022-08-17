@@ -1,12 +1,8 @@
 package com.mrv.monitor.scanner.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import com.mrv.monitor.scanner.webclient.B3WebClient;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
-import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 

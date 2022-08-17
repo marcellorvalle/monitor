@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LeitorDadosAluguel {
+
     private final B3WebClient webClient;
     private final ExtratorDadosAluguelService extratorDados;
     private final DateTimeFormatter formatter;

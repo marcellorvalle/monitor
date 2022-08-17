@@ -3,6 +3,7 @@ package com.mrv.monitor.scanner.webclient;
 import org.springframework.web.reactive.function.client.WebClient;
 
 public class B3WebClient {
+
     private final WebClient client;
 
     public B3WebClient() {
