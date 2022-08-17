@@ -3,7 +3,10 @@ package com.mrv.monitor.scanner.consulta;
 import com.mrv.monitor.scanner.webclient.B3WebClient;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class LeitorDadosAluguelService {
@@ -22,8 +25,11 @@ public class LeitorDadosAluguelService {
         this.formatter = formatter;
     }
 
-    public DadosAluguel executar(String ticket, LocalDate data) {
-        var resposta = webClient.executar(ticket, data.format(formatter));
+    @Cacheable(value = "dadosAluguel")
+    public DadosAluguel executar(String ticket) {
+        var resposta = webClient
+            .executar(ticket, LocalDate.now().format(formatter))
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         return extratorDados.executar(resposta);
     }

@@ -10,12 +10,18 @@ public record DadosAluguel(
     double taxaMinima,
     long quantidade,
     LocalDate data
-) {
-    public long papeisPorContrato() {
-        return teveNegocios() ? quantidade / numContratos : 0;
+)
+    implements Comparable<DadosAluguel> {
+    public long getPapeisPorContrato() {
+        return getTeveNegocios() ? quantidade / numContratos : 0;
     }
 
-    public boolean teveNegocios() {
+    public boolean getTeveNegocios() {
         return numContratos > 0;
+    }
+
+    @Override
+    public int compareTo(DadosAluguel o) {
+        return taxaMedia > o.taxaMedia ? 1 : -1;
     }
 }
