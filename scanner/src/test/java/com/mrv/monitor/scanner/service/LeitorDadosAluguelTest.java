@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
 class LeitorDadosAluguelTest {
+
     private final LeitorDadosAluguel leitorDadosAluguel;
 
     public LeitorDadosAluguelTest() {
@@ -22,6 +23,7 @@ class LeitorDadosAluguelTest {
     void deve() {
         Stream
             .of("CIEL3", "EGIE3", "EZTC3", "HYPE3", "ODPV3", "PSSA3", "RADL3")
+            .parallel()
             .map(t -> leitorDadosAluguel.executar(t, LocalDate.now()))
             .forEach(System.out::println);
         //System.out.println(leitorDadosAluguel.executar("PSSA3", LocalDate.now()));
