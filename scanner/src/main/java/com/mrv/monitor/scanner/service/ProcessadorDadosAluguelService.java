@@ -5,7 +5,7 @@ import com.mrv.monitor.scanner.webclient.Resposta;
 import java.time.LocalDate;
 import java.util.Set;
 
-public class ExtratorDadosAluguelService {
+public class ProcessadorDadosAluguelService {
 
     public DadosAluguel executar(Resposta resposta) {
         var dados = new DadosAluguel();

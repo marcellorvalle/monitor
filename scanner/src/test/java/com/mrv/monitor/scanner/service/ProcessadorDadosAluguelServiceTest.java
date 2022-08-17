@@ -4,7 +4,7 @@ import com.mrv.monitor.scanner.webclient.Resposta;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.reactive.function.client.WebClient;
 
-class ExtratorDadosAluguelServiceTest {
+class ProcessadorDadosAluguelServiceTest {
 
     @Test
     void deve() {
@@ -17,7 +17,7 @@ class ExtratorDadosAluguelServiceTest {
             .retrieve()
             .bodyToMono(Resposta.class)
             .block();
-        var dados = new ExtratorDadosAluguelService().executar(result);
+        var dados = new ProcessadorDadosAluguelService().executar(result);
         //      System.out.println(LocalDate.now().format(DateTimeFormatter.ISO_DATE));
         //    System.out.println(LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE));
     }

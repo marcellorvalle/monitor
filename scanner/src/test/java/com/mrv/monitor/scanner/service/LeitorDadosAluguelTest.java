@@ -12,7 +12,7 @@ class LeitorDadosAluguelTest {
 
     public LeitorDadosAluguelTest() {
         leitorDadosAluguel =
-            new LeitorDadosAluguel(new B3WebClient(), new ExtratorDadosAluguelService(), DateTimeFormatter.ISO_DATE);
+            new LeitorDadosAluguel(new B3WebClient(), new ProcessadorDadosAluguelService(), DateTimeFormatter.ISO_DATE);
     }
 
     @Test

@@ -1,6 +1,6 @@
 package com.mrv.monitor.scanner.configuration;
 
-import com.mrv.monitor.scanner.service.ExtratorDadosAluguelService;
+import com.mrv.monitor.scanner.service.ProcessadorDadosAluguelService;
 import com.mrv.monitor.scanner.webclient.B3WebClient;
 import java.time.format.DateTimeFormatter;
 import org.springframework.context.annotation.Bean;
@@ -15,8 +15,8 @@ public class BeanProvider {
     }
 
     @Bean
-    public ExtratorDadosAluguelService extrator() {
-        return new ExtratorDadosAluguelService();
+    public ProcessadorDadosAluguelService extrator() {
+        return new ProcessadorDadosAluguelService();
     }
 
     @Bean

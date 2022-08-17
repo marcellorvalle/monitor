@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 public class LeitorDadosAluguel {
 
     private final B3WebClient webClient;
-    private final ExtratorDadosAluguelService extratorDados;
+    private final ProcessadorDadosAluguelService extratorDados;
     private final DateTimeFormatter formatter;
 
     public LeitorDadosAluguel(
         B3WebClient webClient,
-        ExtratorDadosAluguelService extratorDados,
+        ProcessadorDadosAluguelService extratorDados,
         DateTimeFormatter formatter
     ) {
         this.webClient = webClient;
