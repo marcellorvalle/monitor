@@ -14,10 +14,10 @@ configurations {
 	}
 }
 
-//bootJar {
-//	mainClass = 'com.mrv.monitor.MonitorApplication'
-//}
-//
+bootJar {
+	mainClass = 'com.mrv.monitor.MonitorApplication'
+}
+
 bootRun {
 	mainClass = 'com.mrv.monitor.MonitorApplication'
 }
