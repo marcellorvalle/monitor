@@ -19,4 +19,9 @@ public class DadosAluguelController {
     public Set<DadosAluguel> getById(@PathVariable("tickets") Set<String> tickets) {
         return leitorDadosAluguelService.executar(tickets);
     }
+
+    @GetMapping("/teste")
+    public String teste() {
+        return "OK";
+    }
 }
