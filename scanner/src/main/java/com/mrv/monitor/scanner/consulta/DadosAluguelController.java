@@ -1,5 +1,7 @@
 package com.mrv.monitor.scanner.consulta;
 
+import com.mrv.monitor.scanner.common.DadosAluguel;
+import java.util.Set;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,8 +15,8 @@ public class DadosAluguelController {
         this.leitorDadosAluguelService = leitorDadosAluguelService;
     }
 
-    @GetMapping("/dados-aluguel/{ticket}")
-    public DadosAluguel getById(@PathVariable("ticket") String ticket) {
-        return leitorDadosAluguelService.executar(ticket.toUpperCase());
+    @GetMapping("/dados-aluguel/{tickets}")
+    public Set<DadosAluguel> getById(@PathVariable("tickets") Set<String> tickets) {
+        return leitorDadosAluguelService.executar(tickets);
     }
 }

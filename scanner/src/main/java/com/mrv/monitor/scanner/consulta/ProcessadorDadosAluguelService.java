@@ -1,5 +1,6 @@
 package com.mrv.monitor.scanner.consulta;
 
+import com.mrv.monitor.scanner.common.DadosAluguel;
 import com.mrv.monitor.scanner.webclient.Resposta;
 import java.time.LocalDate;
 import java.util.Set;

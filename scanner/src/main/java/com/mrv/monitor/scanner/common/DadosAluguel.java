@@ -1,4 +1,4 @@
-package com.mrv.monitor.scanner.consulta;
+package com.mrv.monitor.scanner.common;
 
 import java.time.LocalDate;
 

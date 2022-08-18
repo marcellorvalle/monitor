@@ -1,7 +1,8 @@
 package com.mrv.monitor.scanner.configuration;
 
+import com.mrv.monitor.scanner.common.DadosCache;
 import com.mrv.monitor.scanner.webclient.B3WebClient;
-import java.time.format.DateTimeFormatter;
+import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,8 +14,8 @@ public class BeanProvider {
         return new B3WebClient();
     }
 
-    @Bean
-    public DateTimeFormatter dateFormatter() {
-        return DateTimeFormatter.ISO_DATE;
+    @Bean(name = "meh")
+    public DadosCache caches(CacheManager cacheManager) {
+        return new DadosCache(cacheManager.getCache("dadosAluguel"));
     }
 }

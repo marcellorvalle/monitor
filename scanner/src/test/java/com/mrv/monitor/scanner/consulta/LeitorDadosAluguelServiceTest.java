@@ -1,10 +1,11 @@
 package com.mrv.monitor.scanner.consulta;
 
+import com.mrv.monitor.scanner.common.DadosCache;
 import com.mrv.monitor.scanner.webclient.B3WebClient;
-import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 class LeitorDadosAluguelServiceTest {
 
@@ -15,14 +16,14 @@ class LeitorDadosAluguelServiceTest {
             new LeitorDadosAluguelService(
                 new B3WebClient(),
                 new ProcessadorDadosAluguelService(),
-                DateTimeFormatter.ISO_DATE
+                Mockito.mock(DadosCache.class)
             );
     }
 
     @Test
     void deve() {
         var results = papeis()
-            .map(leitorDadosAluguelService::executar)
+            .map(leitorDadosAluguelService::get)
             .filter(d -> d.numContratos() > 1 && d.taxaMedia() >= 1)
             .sorted(Comparator.reverseOrder())
             .toList();

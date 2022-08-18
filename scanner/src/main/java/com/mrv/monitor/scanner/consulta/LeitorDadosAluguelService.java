@@ -1,35 +1,42 @@
 package com.mrv.monitor.scanner.consulta;
 
+import com.mrv.monitor.scanner.common.DadosAluguel;
+import com.mrv.monitor.scanner.common.DadosCache;
 import com.mrv.monitor.scanner.webclient.B3WebClient;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.http.HttpStatus;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class LeitorDadosAluguelService {
 
     private final B3WebClient webClient;
     private final ProcessadorDadosAluguelService extratorDados;
-    private final DateTimeFormatter formatter;
+
+    private final DadosCache cache;
 
     public LeitorDadosAluguelService(
         B3WebClient webClient,
         ProcessadorDadosAluguelService extratorDados,
-        DateTimeFormatter formatter
+        DadosCache cache
     ) {
         this.webClient = webClient;
         this.extratorDados = extratorDados;
-        this.formatter = formatter;
+        this.cache = cache;
     }
 
-    @Cacheable(value = "dadosAluguel")
-    public DadosAluguel executar(String ticket) {
-        var resposta = webClient
-            .executar(ticket, LocalDate.now().format(formatter))
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public Set<DadosAluguel> executar(Set<String> tickets) {
+        return tickets.stream().map(this::tryCache).collect(Collectors.toSet());
+    }
+
+    private DadosAluguel tryCache(String ticket) {
+        return cache.computeIfAbsent(ticket, this::get);
+    }
+
+    public DadosAluguel get(String ticket) {
+        var resposta = webClient.executar(ticket, LocalDate.now().format(DateTimeFormatter.ISO_DATE));
 
         return extratorDados.executar(resposta);
     }

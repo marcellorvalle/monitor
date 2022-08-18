@@ -27,19 +27,17 @@ public class B3WebClient {
                 .build();
     }
 
-    public Optional<Resposta> executar(String ticket, String data) {
+    public Resposta executar(String ticket, String data) {
         try {
             logger.debug("Baixando dados para {} em {}", ticket, data);
 
-            return Optional.ofNullable(
-                client
-                    .get()
-                    .uri("/{ticket}/{data}", ticket, data)
-                    .retrieve()
-                    .bodyToMono(Resposta.class)
-                    .toFuture()
-                    .get()
-            );
+            return client
+                .get()
+                .uri("/{ticket}/{data}", ticket.toUpperCase(), data)
+                .retrieve()
+                .bodyToMono(Resposta.class)
+                .toFuture()
+                .get();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
