@@ -20,7 +20,7 @@ public class DadosAluguelController {
         return leitorDadosAluguelService.executar(tickets);
     }
 
-    @GetMapping("/teste")
+    @GetMapping("/")
     public String teste() {
         return "OK";
     }
