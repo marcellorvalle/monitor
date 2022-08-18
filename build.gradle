@@ -14,12 +14,12 @@ configurations {
 	}
 }
 
-bootJar {
-	mainClass = 'com.mrv.modulesgradle.MonitorApplication'
-}
-
+//bootJar {
+//	mainClass = 'com.mrv.monitor.MonitorApplication'
+//}
+//
 bootRun {
-	mainClass = 'com.mrv.modulesgradle.MonitorSApplication'
+	mainClass = 'com.mrv.monitor.MonitorApplication'
 }
 
 allprojects {
@@ -59,11 +59,11 @@ allprojects {
 	}
 }
 
-//def modules= [
-//	"scanner",
-//	":application"
-//]
-//
-//dependencies {
-//	modules.collect { implementation project(it)}
-//}
+def modules= [
+	"scanner",
+	":application"
+]
+
+dependencies {
+	modules.collect { implementation project(it)}
+}
