@@ -22,13 +22,13 @@ bootRun {
 	mainClass = 'com.mrv.monitor.MonitorApplication'
 }
 
-jar {
-	manifest {
-		attributes(
-				'Main-Class': 'com.mrv.monitor.MonitorApplication'
-		)
-	}
-}
+//jar {
+//	manifest {
+//		attributes(
+//				'Main-Class': 'com.mrv.monitor.MonitorApplication'
+//		)
+//	}
+//}
 
 allprojects {
 	apply plugin: 'java'
