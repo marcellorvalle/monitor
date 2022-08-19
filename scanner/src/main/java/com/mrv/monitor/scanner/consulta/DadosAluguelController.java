@@ -17,6 +17,7 @@ public class DadosAluguelController {
 
     @GetMapping("/dados-aluguel/{tickets}")
     public Set<DadosAluguel> getById(@PathVariable("tickets") Set<String> tickets) {
+        //http://localhost:8080/dados-aluguel/bbas3,eztc3,pssa3,mdia3,bbdc3,itub3
         return leitorDadosAluguelService.executar(tickets);
     }
 

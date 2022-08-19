@@ -1,6 +1,9 @@
 package com.mrv.monitor.scanner.webclient;
 
+import java.time.Duration;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
@@ -29,16 +32,21 @@ public class B3WebClient {
 
     public Resposta executar(String ticket, String data) {
         try {
-            logger.debug("Baixando dados para {} em {}", ticket, data);
+            logger.debug("GET {}/{}", ticket, data);
 
             return client
                 .get()
                 .uri("/{ticket}/{data}", ticket.toUpperCase(), data)
                 .retrieve()
                 .bodyToMono(Resposta.class)
+                .timeout(Duration.ofMillis(5000))
                 .toFuture()
                 .get();
         } catch (Exception e) {
+            if (e.getCause() instanceof TimeoutException) {
+                logger.error("Timeout - {}", ticket);
+                return Resposta.empty(ticket + "(timeout)");
+            }
             throw new RuntimeException(e);
         }
     }

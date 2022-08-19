@@ -28,7 +28,7 @@ public class LeitorDadosAluguelService {
     }
 
     public Set<DadosAluguel> executar(Set<String> tickets) {
-        return tickets.parallelStream().map(this::tryCache).collect(Collectors.toSet());
+        return tickets.stream().map(this::tryCache).collect(Collectors.toSet());
     }
 
     private DadosAluguel tryCache(String ticket) {
