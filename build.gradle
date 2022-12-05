@@ -75,3 +75,4 @@ def modules= [
 dependencies {
 	modules.collect { implementation project(it)}
 }
+targetCompatibility = JavaVersion.VERSION_17
