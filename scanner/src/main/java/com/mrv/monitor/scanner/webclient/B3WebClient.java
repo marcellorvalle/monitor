@@ -39,7 +39,7 @@ public class B3WebClient {
                 .uri("/{ticket}/{data}", ticket.toUpperCase(), data)
                 .retrieve()
                 .bodyToMono(Resposta.class)
-                .timeout(Duration.ofMillis(5000))
+                .timeout(Duration.ofMillis(20000))
                 .toFuture()
                 .get();
         } catch (Exception e) {
