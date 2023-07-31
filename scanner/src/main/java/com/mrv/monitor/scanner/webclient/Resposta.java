@@ -10,7 +10,7 @@ public record Resposta(String name, Collection<String[]> values) {
         return new Resposta(name, Collections.emptyList());
     }
     public Set<Detalhe> detalhes() {
-        return values.stream().map(Detalhe::new).collect(Collectors.toSet());
+        return  values.stream().map(Detalhe::new).collect(Collectors.toSet());
     }
 
     public record Detalhe(long quantidade, double taxa) {
