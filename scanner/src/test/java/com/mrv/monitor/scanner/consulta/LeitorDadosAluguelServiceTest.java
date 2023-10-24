@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 
 class LeitorDadosAluguelServiceTest {
 
@@ -23,8 +22,6 @@ class LeitorDadosAluguelServiceTest {
 
     @Test
     void deve() {
-        RestTemplateBuilder r = null;
-
         var results = papeis()
             .map(leitorDadosAluguelService::get)
             .filter(d -> d.numContratos() > 1 && d.taxaMedia() >= 1)
